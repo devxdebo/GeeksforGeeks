@@ -1,14 +1,13 @@
 class Solution {
   public:
-    bool ispossible(int mid,vector <int> &stalls, int k){
-        int placed = 1;
-        int firstplaced = stalls[0];
-        
+    bool ispossible(int maxdist,vector <int> &stalls, int k){
+        int issetup = stalls[0];
+        int numofcows = 1;
         for(int i=1;i<stalls.size();i++){
-            if(stalls[i]-firstplaced>=mid){
-                placed++;
-                firstplaced = stalls[i];
-                if(placed==k){
+            if(stalls[i]-issetup >= maxdist){
+                numofcows++;
+                issetup = stalls[i];
+                if(numofcows>=k){
                     return true;
                 }
             }
@@ -17,10 +16,11 @@ class Solution {
     }
     int aggressiveCows(vector<int> &stalls, int k) {
         // code here
+        
         sort(stalls.begin(),stalls.end());
         
         int st = 1;
-        int end = stalls[stalls.size()-1]-stalls[0];
+        int end = *(max_element(stalls.begin(),stalls.end()))-*(min_element(stalls.begin(),stalls.end()));
         int ans;
         
         while(st<=end){
@@ -34,6 +34,9 @@ class Solution {
                 end = mid-1;
             }
         }
+        
         return ans;
+        
+        
     }
 };
