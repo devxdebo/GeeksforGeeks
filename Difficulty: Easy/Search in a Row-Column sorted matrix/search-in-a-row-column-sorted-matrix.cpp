@@ -1,20 +1,20 @@
 // User function template for C++
 class Solution {
   public:
-    bool matSearch(vector<vector<int>> &matrix, int target) {
+    bool matSearch(vector<vector<int>> &mat, int x) {
         // your code here
-        int colnum = matrix[0].size()-1;
-        int rownum = matrix.size()-1;
-        int xi = 0;
-        int yi = colnum;
-
-        while(xi<=rownum && yi>=0){
-            if(matrix[xi][yi]==target){
+        int n = mat.size();
+        int m = mat[0].size();
+        int row = 0;
+        int col = m-1;
+        
+        while(row!=n && col!=m){
+            if(mat[row][col]==x){
                 return true;
-            }else if(matrix[xi][yi]>target){
-                yi--;
+            }else if(mat[row][col]>x){
+                col--;
             }else{
-                xi++;
+                row++;
             }
         }
         return false;
