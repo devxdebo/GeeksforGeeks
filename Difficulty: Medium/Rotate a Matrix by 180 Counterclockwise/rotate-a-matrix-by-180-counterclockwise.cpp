@@ -2,27 +2,23 @@ class Solution {
   public:
     void rotateMatrix(vector<vector<int>>& matrix) {
         // Code here
-        int count = 0;
         int N = matrix.size();
+        int count = 2;
         
-        while(count!=2){
-            
+        while(count!=0){
             for(int i=0;i<N;i++){
                 for(int j=0;j<i;j++){
                     swap(matrix[i][j],matrix[j][i]);
                 }
             }
-            
             for(int i=0;i<N;i++){
-                int m = N-1;
+                int end = N-1;
                 for(int j=0;j<N/2;j++){
-                    swap(matrix[i][j],matrix[i][m]);
-                    m--;
+                    swap(matrix[i][end],matrix[i][j]);
+                    end--;
                 }
             }
-            
-            count++;
+            count--;
         }
-        
     }
 };
