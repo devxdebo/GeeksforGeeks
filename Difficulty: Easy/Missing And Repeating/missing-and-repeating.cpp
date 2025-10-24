@@ -5,8 +5,10 @@ class Solution {
         int N = nums.size();
         vector <int> ans;
         
-        for(int i=0;i<N;i++){
+        for(int i = 0;i<N;i++){
+            
             while(nums[i]!=i+1){
+                
                 if(nums[i]==nums[nums[i]-1]){
                     break;
                 }else{
