@@ -1,21 +1,25 @@
 class Solution {
   public:
-    void recursion(string &nums,int i, string temp, vector <string> &ans){
+    void helper(string &nums,int i,string &temp,vector <string> &ans){
+
         if(i==nums.size()){
             ans.emplace_back(temp);
             return;
         }
+
         temp.push_back(nums[i]);
-        recursion(nums,i+1,temp,ans);
+        helper(nums,i+1,temp,ans);
         temp.pop_back();
-        recursion(nums,i+1,temp,ans);
+        helper(nums,i+1,temp,ans);
+
     }
-    vector<string> AllPossibleStrings(string &nums) {
+    
+    vector<string> AllPossibleStrings(string s) {
         // Code here
-        vector <string> ans;
         string temp;
-        recursion(nums,0,temp,ans);
+        vector <string> ans;
+        helper(s,0,temp,ans);
         sort(ans.begin(),ans.end());
-        return ans;   
+        return ans;
     }
 };
